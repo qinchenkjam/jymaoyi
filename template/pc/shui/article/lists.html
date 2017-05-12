@@ -1,0 +1,77 @@
+{extend name="base"/}
+{block name="style"}
+<link href="//cdn.amazeui.org/amazeui/2.7.2/css/amazeui.css" rel="stylesheet"> 
+{/block}
+{block name="banner"}
+ <!-- banner -->
+    <div class="index_case_banner index_public">
+        <img src="__HOME__/__HOME__/__HOME__/images/case_03.png" alt="">
+    </div>
+{/block}
+
+<!-- main -->
+{block name="main"}
+    <div class="case_main index_public">
+        <section class="case_left">
+            <footer class="case_left_t">
+                <span class="case_left_t1">新闻动态</span>
+                <span class="case_left_t2">NEWS INFORMATION</span>
+            </footer>
+            <ul class="case_left_ul1">
+                <!-- <li><a href="" class="case_left_li_on">公司新闻</a></li> -->
+                {volist name="ArticleCate" id="vo"}
+                <li><a href="{:url('index/article/lists',['cat_id'=>$vo.cat_id])}" class="">{$vo.cat_name}</a></li>
+                {/volist}
+              
+            </ul>
+
+            <footer class="case_left_b">
+                <span class="case_left_b1">新闻咨询</span>
+                <span class="case_left_b2"><a href="">MORE+</a></span>
+            </footer>
+               <!--公共新闻列表-->
+               {include file="public/news_left"/}
+        </section>
+        <section class="case_right">
+            <header class="case_right_f">
+                <div class="case_right_f_l">公司新闻</div>
+                <div class="case_right_f_r">
+                    <a href="jvascript:;">首页</a>&gt
+                    <a href="">新闻动态</a>&gt
+                    <a href="">公司新闻</a>
+                </div>
+                <div class="clear"></div>
+            </header>
+            <div class="case_right_box">
+            {volist name='list' id='news'}
+                <section class="news-list">
+                    <a href=""><img src="__HOME__/__HOME__/__HOME__/images/news_03.png" alt=""></a>
+                    <dl>
+                        <dt>{$news.title}</dt>
+                        <dd class="news-list_dd1">
+                            <img src="__HOME__/__HOME__/images/news_10 (2).png" alt="" class="news-list_d1_i1">
+                            <span>{$news.add_time}</span>
+                            <img src="__HOME__/__HOME__/images/news_10 (1).png" alt="" class="news-list_d1_12">
+                            <span>人看过</span>
+                        </dd>
+                      <!--   <dd class="news-list_dd2">...      <a href="{:url('index/news/detail',['id'=>$news.id])}" class="news-list_dd2_a">[查看详情]</a></dd> -->
+                          <dd class="news-list_dd2">...      <a href="{:url('index/article/detail',['id'=>$news.id])}" class="news-list_dd2_a">[查看详情]</a></dd>
+                    </dl>
+                    <div class="clear"></div>
+                </section>
+                {/volist}
+                <div class="clear"></div>
+            </div>
+         
+                <!-- <a href="">上页</a>
+                <a href="">1</a>
+                <a href="">2</a>
+                <a href="">3</a>
+                <a href="">…</a>
+                <a href="">下页</a> -->
+                {$list->render()}
+            </div>
+        </section>
+        <div class="clear"></div>
+    </div>
+ {/block} 

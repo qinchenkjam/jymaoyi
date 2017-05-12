@@ -1,0 +1,7 @@
+5.07版本
+
+1  http://www.kancloud.cn/manual/thinkphp5/118006 下载
+
+2 http://www.kancloud.cn/manual/thinkphp5/118021  自动生成目录结构
+
+

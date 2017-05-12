@@ -1,0 +1,75 @@
+﻿{extend name="public:layout" /}
+{block name="style"}
+<link rel="stylesheet" href="__ADMIN__/lib/zTree/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+{/block}
+{block name="body"}
+
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 分类管理 <span class="c-gray en">&gt;</span> 分类列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20 text-c">
+
+  <form class="Huiform" name="form1" action="{:url('admin/ArticleCate/cateAdd')}" method="post" onsubmit="return checksubmit()">
+    上级栏目： <span class="select-box" style="width:150px">
+    <select class="select" id="sel_Sub" name="pid" onchange="SetSubID(this);">
+      <option value="0" id="type">顶级分类</option>
+      {volist name="list" id="vo"}
+      <option id="sel" value="{$vo['cat_id']}">{$vo.cat_name}</option>
+      {/volist}
+    </select>
+    </span>
+    <input type="hidden" id="hid_ccid" value="" name="">
+    <input class="input-text" style="width:250px" type="text" value="" name="cat_name"placeholder="输入分类" id="class-val"><button type="submit" class="btn btn-success" id=""  onClick=""><i class="icon-plus"></i> 添加</button>
+  </form>
+   <div class="article-class-list cl mt-20">
+    <table class="table table-border table-bordered table-hover table-bg">
+      <thead>
+        <tr class="text-c">
+        
+          <th width="80">ID</th>
+          <th width="80">排序</th>
+          <th width="200">分类名称</th>
+          <th width="70">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+      {volist name="list" id="vo"}
+        <tr class="text-c">
+        
+          <td>{$vo.cat_id}</td>
+          <td>{$vo.sort}</td>
+          <td class="text-l">{$vo.cat_name}</td>
+          <td class="f-14">
+           <a style="text-decoration:none" class="ml-5"  href="cateEdit?id={$vo.cat_id}" title="编辑"> <i class="Hui-iconfont">&#xe6df;</i></a> 
+           {if condition="$vo['cat_id'] EGT 3"}
+           <a style="text-decoration:none" class="ml-5"  href="cateDel?cid={$vo.cat_id}" title="删除"><i class="Hui-iconfont">&#xe6e2;</i>
+           </a>
+           {/if}
+          </td>
+        </tr>
+        {/volist}
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+ $('#sel_Sub').change(function(){
+   var options=$("#sel_Sub option:selected").val();
+
+ })
+  function checksubmit(){
+    var cat_name=$("#class-val").val();
+  if (cat_name==""){
+         layer.alert('请输入名称！');
+         return false;
+         document.form1.myname.focus();
+           
+    }else{
+      return true; 
+    } 
+  }
+</script>
+{/block}
+
+
+</html>

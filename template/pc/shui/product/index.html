@@ -1,0 +1,76 @@
+{extend name="base"/}
+{block name="banner"}
+   <div class="index_case_banner index_public">
+        <img src="__HOME__/__HOME__/__HOME__/images/case_03.png" alt="">
+    </div> 
+{/block}
+{block name="main"}
+    <!-- main -->
+    <div class="case_main index_public">
+        <section class="case_left">
+            <footer class="case_left_t">
+                <span class="case_left_t1">产品展示</span>
+                <span class="case_left_t2">PRODUCT DISPLAY</span>
+            </footer>
+            <ul class="case_left_ul1">
+          <!--  <form name="form" action="{:url('index/Product/index')}" method="post" id="search_form"> -->
+                       {volist name="pro_cate" id="vo"}
+              <li>
+              <a href="{:url('index/product/index',['cid'=>$vo.cat_id])}" class="" >{$vo.cat_name}</a>
+            
+              </li>
+                       {/volist}
+         <!--   </form> -->
+            <!--  {volist name="pro_cate" id="vo"}
+               <li>
+               <a href="javascript:;" class="" onclick="ajaxinfo()" >{$vo.cat_name}</a>
+              
+               </li>
+                        {/volist} -->
+               <!--  <li><a href="" class="case_left_li_on"></a></li> -->
+            </ul>
+
+            <footer class="case_left_b">
+                <span class="case_left_b1">新闻咨询</span>
+                <span class="case_left_b2"><a href="">MORE+</a></span>
+            </footer>
+           <!--公共新闻列表-->
+               {include file="public/news_left"/}
+
+        </section>
+        <section class="case_right">
+            <header class="case_right_f">
+                <div class="case_right_f_l">产品展示</div>
+                <div class="case_right_f_r">
+                    <a href="jvascript:;">首页</a>&gt
+                    <a href="">案例展示</a>&gt
+                    <a href="">酒店饮水类</a>
+                </div>
+                <div class="clear"></div>
+            </header>
+            <div class="case_right_box">
+            {volist name="pro_list" id="vo"}
+                <dl class="product_dl">
+                    <dt><a href="{:url('index/product/product_show',['id'=>$vo.id])}"><img src="{$Think.UPLODS}{$vo.image}" alt=""></a></dt>
+              <!--       <dd><a href="{:url('index/product/product_show',['id'=>$vo.id])}">{$vo.name}</a></dd> -->
+                     <dd><a href="{:url('index/product/product_show/'.$vo['id'])}">{$vo.name}</a></dd>
+                </dl>
+            {/volist}   
+                <div class="clear"></div>
+            </div>
+            <div class="page">
+                <a href="">上页</a>
+                <a href="">1</a>
+                <a href="">2</a>
+                <a href="">3</a>
+                <a href="">…</a>
+                <a href="">下页</a>
+            </div>
+        </section>
+        <div class="clear"></div>
+    </div>
+
+{/block}
+
+
+

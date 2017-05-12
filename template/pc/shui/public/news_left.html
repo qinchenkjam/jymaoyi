@@ -1,0 +1,5 @@
+ <ul class="case_left_ul2">
+             {volist name='new_list' id='vo'}
+             <li><a href="{:url('index/article/detail',['id'=>$vo.id])}">{$vo.title}</a></li>
+             {/volist}
+ </ul>

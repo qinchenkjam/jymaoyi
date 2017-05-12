@@ -1,0 +1,93 @@
+{extend name="public:layout" /}
+{block name="style"}
+<link href="__ADMIN__/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+{/block}
+{block name="body"}
+<body>
+<div class="page-container">
+	<form action="edit?id={$msg.id}" enctype="multipart/form-data" method="post" class="form form-horizontal" id="form_add">
+	<input type='hidden' id='id' value='{$msg.id}'/>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>幻灯片标题：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$msg.show_name}" placeholder="" id="" name="show_name" style="width:50%">
+			</div>
+		</div>		
+				
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">幻灯片链接：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" name="show_link" id="" placeholder="" value="{$msg.show_link}" class="input-text" style="width:50%">
+				http://开头</div>
+		</div>
+		
+		
+		
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">缩略图：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<div class="uploader-thum-container">
+					<div id="fileList" class="uploader-list"></div>
+					<img width="60" class="product-thumb" src="{$Think.UPLODS}{$msg.show_img}">
+					<input name="image" type="file" class="" id="img" value="" datatype="*1-2" nullmsg="">
+				</div>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">排序值：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$msg.sort}" placeholder="" id="" name="sort" style="width:50%">整数
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button  class="btn btn-primary radius" type="button" id="sub"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+				
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<!--_footer 作为公共模版分离出去-->
+
+
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+
+</body>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="__ADMIN__/lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="__ADMIN__/lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__ADMIN__/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+{literal}
+$(function(){
+	var ue = UE.getEditor('editor');
+});
+{/literal}
+</script>
+<script type="text/javascript">
+{literal}
+$('#sub').click(function(){
+	var img=$("#img").val();
+	var content=$(".content").val();
+   /* if(img==""){
+        //alert('请上传图片');
+        layer.msg('请上传图片');       
+        return false;
+    }*/
+    if(content==""){
+        //alert('请上传图片');
+        layer.msg('请填写内容');       
+        return false;
+    }
+    $('#form_add').submit();
+});
+{/literal} 	
+</script>
+
+{/block}
+</html>

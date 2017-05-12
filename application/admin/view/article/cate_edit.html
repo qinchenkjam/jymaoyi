@@ -1,0 +1,88 @@
+{extend name="public:layout" /}
+{block name="body"}
+</head>
+<body>
+<div class="page-container">
+  <form class="Huiform" action="cateEdit?id={$msg.cat_id}" method="post" id="form-article-class">
+    栏目： <span class="select-box" style="width:150px">
+    <select class="select" id="sel_Sub"  onchange="SetSubID(this);">
+    <option value="0" >--顶级栏目--</option>
+
+      {volist name="list" id="vo"}
+
+      <option id="sel"  name="" value="{$vo['cat_id']}" {if condition="$vo['cat_id'] eq $msg['pid']"} selected{/if} >{$vo.cat_name}</option>
+
+      {/volist}   
+    </select>
+    </span>
+    <input type="hidden" id="hid_ccid" value="{$msg.cat_id}" name="cat_id">
+    排序：
+    <input class="input-text text-c" style="width:50px" type="text" value="{$msg.sort}" placeholder="排序" name="sort" id="class-rank">
+    分类名：
+    <input class="input-text" style="width:170px" type="text" value="{$msg.cat_name}" placeholder="输入分类" name="cat_name" id="class-val">
+    <div class="text-c mt-20" style="margin-left:-100px;">
+      <button type="submit" class="btn btn-success radius" id="" name="" onClick="class_save(this,'2');"><i class="icon-save"></i> 保存</button>
+      <a class="btn btn-success radius" id="admin-role-save laclose" href="javascript:history.back()">返回</a>
+    </div>
+  </form>
+</body>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="__ADMIN__/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__/lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  $('.skin-minimal input').iCheck({
+    checkboxClass: 'icheckbox-blue',
+    radioClass: 'iradio-blue',
+    increaseArea: '20%'
+  });
+  
+  $("#form-user-add").Validform({
+    tiptype:2,
+    callback:function(form){
+      form[0].submit();
+      var index = parent.layer.getFrameIndex(window.name);
+      parent.$('.btn-refresh').click();
+      parent.layer.close(index);
+    }
+  });
+});
+</script>
+<script>
+ $('#sel_Sub').change(function(){
+   var options=$("#sel_Sub option:selected").val();
+
+ })
+  function checksubmit(){
+  if (document.form1.cat_name.value==""){
+
+         layer.alert('请输入名称！');
+         return false;
+         document.form1.myname.focus();
+           
+    }else{
+      return true; 
+    } 
+  }
+</script>
+<script type="text/javascript">
+
+$('#send').click(function(){
+   var cate_name=$('input[name="cate_name"]').val();
+$.ajax({
+        type:"PSOT",
+        url:"{:url('admin/productCate/cateAdd')}",
+        data:{cate_name:cate_names},
+        dataType: "json",
+        success:function(ss){
+            alert(ss);
+        }
+    });  
+
+}
+</script>
+
+
+{/block}
+</html>

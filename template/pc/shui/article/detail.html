@@ -1,0 +1,75 @@
+{extend name="base"/}
+{block name="banner"}
+ <!-- banner -->
+    <div class="index_case_banner index_public">
+        <img src="__HOME__/__HOME__/__HOME__/images/case_03.png" alt="">
+    </div>
+{/block}
+{block name="main"}
+    <!-- main -->
+    <div class="case_main index_public">
+        <section class="case_left">
+            <footer class="case_left_t">
+                <span class="case_left_t1">产品展示</span>
+                <span class="case_left_t2">PRODUCT DISPLAY</span>
+            </footer>
+            <ul class="case_left_ul1">
+                <li><a href="" class="case_left_li_on">公司新闻</a></li>
+                <li><a href="">行业动态</a></li>
+                <li><a href="">常见问题</a></li>
+            </ul>
+
+            <footer class="case_left_b">
+                <span class="case_left_b1">新闻咨询</span>
+                <span class="case_left_b2"><a href="">MORE+</a></span>
+            </footer>
+            <!--公共新闻列表-->
+               {include file="public/news_left"/}
+
+        </section>
+        <section class="case_right">
+            <header class="case_right_f">
+                <div class="case_right_f_l">案例展示</div>
+                <div class="case_right_f_r">
+                    <a href="jvascript:;">首页</a>&gt
+                    <a href="">案例展示</a>&gt
+                    <a href="">工程案例</a>
+                </div>
+                <div class="clear"></div>
+            </header>
+            <div class="case_right_box">
+               <dl class="case_show">
+                   <dt>{$msg.title}</dt>
+                   <dd class="case_show_dd1">
+                       <span>时间：{$msg.add_time|date="Y-m-d H:i:s",###} </span>
+                       <span>来源：新华网</span>
+                       <span>浏览量：167</span>
+                   </dd>
+                   <dd class="case_show_dd2">
+                       
+                  {$msg.content|htmlspecialchars_decode|stripslashes}
+                   </dd>
+                   <dd class="news_show_dd">
+                        <img src="__HOME__/__HOME__/images/index_73.png" alt="">
+                   </dd>
+               </dl>
+            </div>
+            <div class="page_show">
+               <!--  <p>上一篇：<a href="">中山市威可利节能环</a></p> -->
+                <p>上一篇：
+                            {empty name="t_article['prev']"}
+                                <span>没有了</span>
+                            {else/}
+                                <a href="">{$t_article['prev']['title']}</a>
+                            {/empty}</p>
+               <!--  <p>下一篇：<a href="">中山市威可利节能环</a></p> -->
+                             {empty name="t_article['next']"}
+                                <span>没有了</span>
+                            {else/}
+                                <a href="">{$t_article['prev']['title']}</a>
+                            {/empty}</p> 
+            </div>
+        </section>
+        <div class="clear"></div>
+    </div>
+{/block}

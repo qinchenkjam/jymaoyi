@@ -1,0 +1,77 @@
+﻿{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+<!--main-->
+
+{block name="style"}
+
+{/block}
+{block name="main"}
+<div id="main">
+		<div id="mainLeft">
+				<div class="title">category</div>
+				<ul>
+				
+	<li class="cat-item cat-item-18">没有分类目录</li>
+
+				
+				</ul>
+				
+				<div class="clear"></div>
+		</div><!--left end-->
+		<div id="ny_mainRight">
+				<div class="ny_banner"><img src="__HOME__/images/ny_banner.jpg" width="778" height="150" /></div>
+				<div class="ny_main">
+						
+						<div class="title"><span class="right">Position: Home &gt; {$serveTitle}</span> {$serveTitle}</div>
+						<div class="content">
+		<ul class="pro_ul">	
+ {volist name="serveList" id="vo"}								
+<li>
+<a onclick="hits({$vo.id});" href="{:url('index/CaseServe/detail',['id'=>$vo.id])}"><img src="{$Think.UPLODS}{$vo.image}" />{$vo.name|substr=0,21}...</a>
+</li>
+ {/volist} 
+								
+							
+				
+							
+						</ul>	
+						<div class="clear"></div>
+						<div class=" ">
+						
+						</div>
+					
+							
+											
+					
+						</div>
+				<div class="clear"></div>
+				</div>	<!--ny_main-->	
+		</div><!--right end-->
+		<div class="clear"></div>
+</div>
+<!--main end-->
+<script src="__HOME__/js/jquery1.42.min.js"></script>
+<script type="text/javascript">
+/* $(function(){
+    $("#book").click(function(){
+       alert();
+    });
+})*/
+ function hits(id){
+    //alert(id);
+    //var id;
+    $.getJSON("{:url('admin/CaseServe/updateHits')}",{'id':id},function(res){
+        	//console.log(data.status);
+           if(res.status==1){
+               //alert(1); 
+               return true;            
+           }
+           if(res.status==-1){
+
+            console.log(res.status);
+           }
+        });
+
+ }
+</script>
+{/block}

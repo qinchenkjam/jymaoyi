@@ -1,0 +1,214 @@
+{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+
+<!-- banner -->
+{block name="banner"}
+	<div class="index_banner">
+		<div id="slideBox" class="slideBox">
+			
+			<div class="bd">
+				<ul>
+					{volist name="Banner" id="vo"}
+					<li><a href="" target="_blank"><img src="{$Think.UPLODS}{$vo.show_img}" height="490" width="200" /></a></li>
+				    {/volist}
+				</ul>
+			</div>
+
+			<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+			<a class="prev" href="javascript:void(0)"></a>
+			<a class="next" href="javascript:void(0)"></a>
+
+		</div>
+	<script>
+		$(".slideBox").slide({mainCell:".bd ul",effect:"left",autoPlay:true});
+	</script>
+	</div>
+	{/block}
+<!-- banner -->
+
+<!--main-->
+{block name="main"}
+	<div class="index_styll1">
+		<div class="index_styll1_box index_public">
+			<div class="index_styll1_1">
+				<img src="__HOME__/__HOME__/__HOME__/images/index3_12.png" alt="">
+				<dl>
+					<dt>饮用水接触配件</dt>
+					<dd>100%采用食品级304不锈钢不含任何有害金属</dd>
+				</dl>
+			</div>
+			<div class="index_styll1_1">
+				<img src="__HOME__/__HOME__/__HOME__/images/index_21.png" alt="">
+				<dl>
+					<dt>饮用水接触配件</dt>
+					<dd>100%采用食品级304不锈钢不含任何有害金属</dd>
+				</dl>
+			</div>
+			<div class="index_styll1_1">
+				<img src="__HOME__/__HOME__/__HOME__/images/index_12.png" alt="">
+				<dl>
+					<dt>饮用水接触配件</dt>
+					<dd>100%采用食品级304不锈钢不含任何有害金属</dd>
+				</dl>
+			</div>
+			<div class="index_styll1_1">
+				<img src="__HOME__/__HOME__/__HOME__/images/index_18.png" alt="">
+				<dl>
+					<dt>饮用水接触配件</dt>
+					<dd>100%采用食品级304不锈钢不含任何有害金属</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="index_public" style="border:1px solid #ccc">
+		<div class="index_style2">
+			<div class="index_style2_top">
+				<span class="index_style2_top1">产品展示</span>
+				<span class="index_style2_top2">PRODUCT DISPLAY</span>
+				<a href="product.html" class="index_style2_top3">更多 +</a>
+			</div>
+
+			<div class="index_style2_bottom">
+				<div class="slideGroup" style="margin:0 auto">
+					<div class="parBd">
+
+					<div class="slideBox">
+						<a class="sPrev" href="javascript:void(0)"></a>
+						<ul>
+						{volist name="pro_cate" id="vo"}
+							<li>
+								<div class="pic"><a href="{:url('index/product/index',['cid'=>$vo.cat_id])}" target="_blank"><img src="__HOME__/__HOME__/images/index_33.png" /></a></div>
+								<div class="title"><a href="{:url('index/product/index',['cid'=>$vo.cat_id])}" target="_blank">{$vo.cat_name}</a></div>
+							</li>
+							
+						{/volist}
+						</ul>
+						<a class="sNext" href="javascript:void(0)"></a>
+					</div><!-- slideBox End -->
+					<div class="clear"></div>
+				</div>
+			</div>
+			<script>
+				jQuery(".slideGroup .slideBox").slide({ mainCell:"ul",vis:6,prevCell:".sPrev",nextCell:".sNext",effect:"leftLoop"});
+			</script>
+			</div>
+		</div>
+		<div class="index_style2_product">
+		  {volist name="pro_list" id="vo"}
+			<dl>
+				<dt><a href="{:url('index/product/product_show',['id'=>$vo.id])}"><img src="{$Think.UPLODS}{$vo.image}" alt="" width='180px'></a></dt>
+				<dd><a href="">{$vo.name}</a></dd>
+			</dl>
+		  {/volist}
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="index_style3">
+		<div class="index_public">
+			<div class="index_style3_l">
+				<ul>
+					<li class="index_style3_l_on">公司介绍</li>
+					<li>行业动态</li>
+					<li>公司新闻</li>
+					<a href="{:url('index/article/lists')}" class="index_style3_l_r">更多+</a>
+				</ul>
+				<div class="index_style3_l_box">
+					<div class="index_style3_l_box1">
+						<img src="__HOME__/__HOME__/__HOME__/images/index_73.png" alt="">
+						<ul>
+							<li>
+				{$about.content}<a href="{:url('index/pages/index',['id'=>'1'])}" class="">查看+</a>
+							</li>
+							
+						</ul>
+
+					</div>
+
+					<div class="index_style3_l_box1">
+						<img src="__HOME__/__HOME__/__HOME__/images/index_73.png" alt="">
+						<ul>
+						{volist name="new_list" id="vo"}
+							<li><a href="{:url('index/news/detail',['id'=>$vo.id])}">{$vo.title}</a></li>
+						{/volist}
+							
+						</ul>
+					</div>
+
+					<div class="index_style3_l_box1">
+						<img src="__HOME__/__HOME__/__HOME__/images/index_73.png" alt="">
+						<ul>
+							{volist name="cnew_list" id="vo"}
+							<li><a href="{:url('index/news/detail',['id'=>$vo.id])}">{$vo.title}</a></li>
+						{/volist}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="index_style3_r">
+				<div class="index_style3_r_top">
+					<span>常见问题</span>
+					<a href="answer.html">跟多+</a>
+				</div>
+				<dl class="index_style3_r_dl">
+					<dt><img src="__HOME__/__HOME__/images/index_69.png" alt="">有史以来最全的商用开水机故障处理方法 </dt>
+					<dd><img src="__HOME__/__HOME__/images/index_75.png" alt="">
+					<span>可能出现在产品刚安装、较大范围拆卸水机、从新安装后。可能错将高压泵与RO膜膜壳之间的水管直接接到后置活性碳的三通处，使高压泵出的自来水直接进入储水桶。</span>
+					</dd>
+				</dl>
+				<dl class="index_style3_r_dl">
+					<dt><img src="__HOME__/__HOME__/images/index_69.png" alt="">有史以来最全的商用开水机故障处理方法 </dt>
+					<dd><img src="__HOME__/__HOME__/images/index_75.png" alt="">
+					<span>可能出现在产品刚安装、较大范围拆卸水机、从新安装后。可能错将高压泵与RO膜膜壳之间的水管直接接到后置活性碳的三通处，</span>
+					</dd>
+				</dl>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<!-- 案例展示 -->
+	<div class="index_public index_case" >
+		<div class="index_style2">
+			<div class="index_style2_top index_case1">
+				<span class="index_style2_top1">产品推荐</span>
+				<span class="index_style2_top2">PRODUCT DISPLAY</span>
+				<a href="product.html" class="index_style2_top3">更多 +</a>
+			</div>
+
+			<div class="index_style2_bottom index_style2_bottom1">
+				<div class="slideGroup1" style="margin:0 auto">
+					<div class="parBd">
+
+					<div class="slideBox">
+						<a class="sPrev" href="javascript:void(0)"></a>
+						<ul>
+						{volist name="pro_recommend" id="vo"}
+							<li>
+								<div class="pic"><a href="{:url('index/product/product_show',['id'=>$vo.id])}" target="_blank"><img src="{$Think.UPLODS}{$vo.image}" /></a></div>
+								<div class="title"><a href="" target="_blank">{$vo.name}</a></div>
+							</li>
+						{/volist}	
+							
+
+						</ul>
+						<a class="sNext" href="javascript:void(0)"></a>
+					</div><!-- slideBox End -->
+					<div class="clear"></div>
+				</div>
+			</div>
+			<script>
+				jQuery(".slideGroup1 .slideBox").slide({ mainCell:"ul",vis:4,prevCell:".sPrev",nextCell:".sNext",effect:"leftLoop"});
+			</script>
+			</div>
+		</div>
+	</div>
+{/block}
+
+
+<!--main/-->
+
+
+
+
+
+

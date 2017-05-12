@@ -1,0 +1,48 @@
+{extend name="public:layout" /}
+{block name="body"}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 基本设置 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container" style="width:80%">	
+	<div class="mt-20">
+	<form class="form form-horizontal" id="form-article-add" action="{:url('admin/System/edit')}" method="post">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+				<tr class="text-c">
+				
+				
+					<th width="180">配置</th>
+					<th width="">值</th>
+					
+					<!-- <th width="120">操作</th> -->
+				</tr>
+			</thead>
+			<tbody>
+			 {volist name="list" id="vo"}
+				<tr class="text-c">
+				
+				
+					
+					<td>{$vo.name}</td>
+					<td><input type="hidden" name="id[]" value="{$vo.id}">{$vo._html}</td>
+					
+					<!-- <td class="f-14 td-manage"> <a style="text-decoration:none" class="ml-5"  href="index?id={$vo.id}" title="编辑"> <i class="Hui-iconfont">&#xe6df;</i></a> </td> -->
+				</tr>
+				{/volist}
+			</tbody>
+		</table>
+		<br/>
+        <br/>
+ 
+ 
+	</div>
+</div>
+<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</body>
+{/block}
+</html>

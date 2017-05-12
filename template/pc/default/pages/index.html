@@ -1,0 +1,35 @@
+﻿{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+<!--main-->
+{block name="main"}
+<div id="main">
+		<div id="mainLeft">
+				<div class="title">{$page.page_name}</div>
+				<ul>
+			<div class="menu">
+			<ul>			
+            {volist name="pageList" id="vo"}
+            <li class="page_item page-item-7"><a href="{:url('index/pages/index',['id'=>$vo.id])}">{$vo.page_name}</a>
+			</li> {/volist}
+			</ul></div>
+ 
+				</ul>
+				<div class="clear"></div>
+		</div><!--left end-->
+		<div id="ny_mainRight">
+				<div class="ny_banner"><img src="__HOME__/images/ny_banner.jpg" width="778" height="150" /></div>
+				<div class="ny_main">
+						
+						<div class="title"><span class="right">Position: Homt &gt; {$page.page_name}</a></span>{$page.page_name}</div>
+						<div class="content">
+									<h3><!--StartFragment --></h3>
+ {$page.content|htmlspecialchars_decode|stripslashes}
+			
+				
+						</div>
+				<div class="clear"></div>
+				</div>	<!--ny_main-->	
+		</div><!--right end-->
+		<div class="clear"></div>
+</div><!--main end-->
+{/block}

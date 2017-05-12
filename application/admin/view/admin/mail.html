@@ -1,0 +1,17 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link href="__PUBLIC__/Admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<include file="Public:header"/>
+</head>
+<body>
+<form action="{:U('User/send_mail')}" method="post" enctype="multipart/form-data">
+收件人邮箱：<input  type="text" name="mail"/>
+标题：<input  type="text" name="title"/>
+内容<input  type="text" name="content"/>
+<input class="button" type="submit" value="发送"/>
+</form>
+</body>
+</html>

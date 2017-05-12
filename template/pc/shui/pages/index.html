@@ -1,0 +1,52 @@
+{extend name="base"/}
+{block name="banner"}
+    <!-- banner -->
+    <div class="index_case_banner index_public">
+        <img src="__HOME__/__HOME__/__HOME__/images/case_03.png" alt="">
+    </div>
+{/block}
+{block name="main"}
+    <!-- main -->
+    <div class="case_main index_public">
+        <section class="case_left">
+            <footer class="case_left_t">
+                <span class="case_left_t1">公司简介</span>
+                <span class="case_left_t2">Company profile</span>
+            </footer>
+            <ul class="case_left_ul1">
+                <li><a href="{:url('index/pages/index',['id'=>'1'])}" class="case_left_li_on">公司简介</a></li>
+                <li><a href="{:url('index/pages/index',['id'=>'2'])}">关于我们</a></li>
+                <li><a href="{:url('index/pages/index',['id'=>'4'])}">联系我们</a></li>
+            </ul>
+
+            <footer class="case_left_b">
+                <span class="case_left_b1">新闻咨询</span>
+                <span class="case_left_b2"><a href="">MORE+</a></span>
+            </footer>
+           <!--公共新闻列表-->
+               {include file="public/news_left"/}
+
+        </section>
+        <section class="case_right">
+            <header class="case_right_f">
+                <div class="case_right_f_l"> {$page.page_name}</div>
+                <div class="case_right_f_r">
+                    <a href="jvascript:;">首页</a>&gt
+                    <a href="">公司简介</a>&gt
+                    <a href="">发展历程</a>
+                </div>
+                <div class="clear"></div>
+            </header>
+            <div class="case_right_box">
+                <div class="aboat_text">
+                      {$page.content|htmlspecialchars_decode|stripslashes}
+                </div>
+                <div class="about_img1">
+                    <img src="__HOME__/__HOME__/images/about1_03.png" alt="">
+                </div>
+
+            </div>
+        </section>
+        <div class="clear"></div>
+    </div>
+{/block}

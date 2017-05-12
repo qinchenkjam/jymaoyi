@@ -1,0 +1,58 @@
+﻿{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+<!--main-->
+{block name="main"}
+
+<div id="main">
+		<div id="mainLeft">
+				<div class="title">category</div>
+				<ul>
+{volist name="pro_cate" id="vo"}
+	<li class="cat-item cat-item-18"><a href="{:url('index/product/index',['cid'=>$vo.cat_id])}" title="{$vo.description} ">{$vo.cat_name}</a></li>
+{/volist}
+
+				</ul>
+				<div class="clear"></div>
+		</div><!--left end-->
+		<div id="ny_mainRight">
+				<div class="ny_banner"><img src="__HOME__/images/ny_banner.jpg" width="778" height="150" /></div>
+				<div class="ny_main">
+															
+						<div class="title"><span class="right">Position: Homt &gt; {$pro.name|substr=0,10}..</a></span> {$pro.name|substr=0,10}..</div>
+						<div class="content">
+								    					        
+ 	
+								<h1 align="center" style="font-size:16px">{$pro.name}</h1>
+							
+
+<!--字体大小控制-->
+<script language="javascript"> 
+function doZoom(size){
+	document.getElementById('zoom').style.fontSize=size+'pt'
+}
+</script> 
+<p class="ny_page" align="center" style="color:#999999">
+hit：<strong>{$pro.hit} </strong> &nbsp;    
+time：{$pro.add_time|date="Y-m-d",###} &nbsp;    
+								
+								</p>
+								<p>&nbsp;</p>
+<div id="zoom">
+{$pro.content}
+								
+</div>
+			
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								 
+&nbsp; &nbsp;
+<span></span>
+								<p>&nbsp;</p>
+					
+						</div>
+				<div class="clear"></div>
+				</div>	<!--ny_main-->	
+		</div><!--right end-->
+		<div class="clear"></div>
+</div><!--main end-->
+{/block}

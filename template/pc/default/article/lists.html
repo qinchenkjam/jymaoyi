@@ -1,0 +1,45 @@
+﻿{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+<!--main-->
+{block name="main"}
+<div id="main">
+		<div id="mainLeft">
+				<div class="title">category</div>
+				<ul>
+				{volist name="ArticleCate" id="vo"}
+                <li><a href="{:url('index/article/lists',['cat_id'=>$vo.cat_id])}" class="">{$vo.cat_name}</a></li>
+                {/volist}
+				</ul>
+				<div class="clear"></div>
+		</div><!--left end-->
+		<div id="ny_mainRight">
+				<div class="ny_banner"><img src="__HOME__/images/ny_banner.jpg" width="778" height="150" /></div>
+				<div class="ny_main">
+						
+						<div class="title"><span class="right">Position: Home &gt; News</span> News</div>
+						<div class="content">
+								
+															<ul class="news_ul">
+														
+										
+		{volist name='list' id='news'}
+<li><span class="more">{$news.add_time|date="Y-m-d",###}</span><a href="{:url('index/article/detail',['id'=>$news.id])}">{$news.title}</a></li>
+												
+		  {/volist}			
+														
+				
+							
+						</ul>	
+						<div class="clear"></div>
+						<div class="scott" id="quotes">	</div>
+						
+							
+					
+						</div>
+				<div class="clear"></div>
+				</div>	<!--ny_main-->	
+		</div><!--right end-->
+		<div class="clear"></div>
+</div>
+<!--main end-->
+{/block}

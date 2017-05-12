@@ -1,0 +1,94 @@
+{extend name="base"/}
+{block name="banner"}
+   <div class="index_case_banner index_public">
+        <img src="__HOME__/__HOME__/__HOME__/images/case_03.png" alt="">
+    </div> 
+{/block}
+{block name="main"}
+    <!-- main -->
+    <div class="case_main index_public">
+        <section class="case_left">
+            <footer class="case_left_t">
+                <span class="case_left_t1">产品展示</span>
+                <span class="case_left_t2">PRODUCT DISPLAY</span>
+            </footer>
+            <ul class="case_left_ul1">
+                <li><a href="" class="case_left_li_on">酒店饮水类</a></li>
+                <li><a href="">工程饮水类</a></li>
+                <li><a href="">办公饮水类</a></li>
+            </ul>
+
+            <footer class="case_left_b">
+                <span class="case_left_b1">新闻咨询</span>
+                <span class="case_left_b2"><a href="">MORE+</a></span>
+            </footer>
+            <!--公共新闻列表-->
+               {include file="public/news_left"/}
+
+        </section>
+        <section class="case_right">
+            <header class="case_right_f">
+                <div class="case_right_f_l">产品展示</div>
+                <div class="case_right_f_r">
+                    <a href="jvascript:;">首页</a>&gt
+                    <a href="">案例展示</a>&gt
+                    <a href="">酒店饮水类</a>
+                </div>
+                <div class="clear"></div>
+            </header>
+        <div class="case_right_box">
+            <div class="producmt1">
+
+                <div class="producmt1_l">
+                    <div class="" style="margin:0 auto">
+                         
+                      <img src="{$Think.UPLODS}{$pro.image} "> 
+                </div>
+                
+                </div>
+                <div class="producmt1_r">
+                    <div class="producmt1_r_h">{$pro.name}</div>
+                    <br/>
+                    <table id="producmt1_r_t">
+                       {$pro.desc}
+                    </table>
+                    
+                    
+                    </table>
+                    </div> 
+                </div>
+             <div class="clear"></div>   
+            </div>
+            
+            <dl class="product_show_dl" style="margin-top:30px">
+                <dt>商品详情</dt>
+                <dd>{$pro.content}</dd>
+            </dl>
+            <dl class="product_show_dl" style="margin-top:10px">
+                <dt>相关推荐</dt>
+                <dd class="product_show_dl2">
+                    <dl class="product_dl">
+                        <dt><a href="product_show.html"><img src="__HOME__/__HOME__/images/index_57.png" alt=""></a></dt>
+                        <dd><a href="">优质市政自来水</a></dd>
+                    </dl>
+                    <dl class="product_dl">
+                        <dt><a href="product_show.html"><img src="__HOME__/__HOME__/images/index_60.png" alt=""></a></dt>
+                        <dd><a href="">优质市政自来水</a></dd>
+                    </dl>
+                    <dl class="product_dl">
+                        <dt><a href="product_show.html"><img src="__HOME__/__HOME__/images/index_63.png" alt=""></a></dt>
+                        <dd><a href="">优质市政自来水</a></dd>
+                    </dl>
+                    <dl class="product_dl">
+                        <dt><a href="product_show.html"><img src="__HOME__/__HOME__/images/index_57.png" alt=""></a></dt>
+                        <dd><a href="">优质市政自来水</a></dd>
+                    </dl>
+                    <div class="clear"></div>
+                </dd>
+            </dl>
+        </div>
+        </section>
+        <div class="clear"></div>
+        
+    </div>
+{/block}

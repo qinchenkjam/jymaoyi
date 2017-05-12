@@ -1,0 +1,63 @@
+<?php
+    if(config('LAYOUT_ON')) {
+        echo '{__NOLAYOUT__}';
+    }
+?>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title> 页面自动中...跳转 等待时间：
+            <?php echo($wait); ?>
+        </title>
+
+    </head>
+
+    <body>
+        <a id="href" href="<?php echo($url); ?>" style='display:none'>跳转</a>
+        <a id="wait" style='display:none'><?php echo($wait); ?></a>
+        
+             
+       
+    </body>
+<script type="text/javascript" src="__ADMIN__/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__/lib/layer/2.1/layer.js"></script> 
+ <script>
+         $(function(){
+            var code="<?php echo($code); ?>";
+            var msg = "<?php echo($msg); ?>";       
+            //var jumpurl = "<?php echo($url); ?>";
+            //var wait = "<?php echo($wait); ?>";
+            var wait = document.getElementById('wait'),
+                href = document.getElementById('href').href;
+            switch (code){
+                case 1:
+                layer.alert('操作成功,跳转中... 等待时间'+wait+'秒',function(){
+                var interval = setInterval(function(){
+                var time = --wait.innerHTML;
+                    if(time <= 0) {
+                        location.href = href;
+                        clearInterval(interval);
+                    };
+                }, 1000);
+
+                });
+                break;
+                case 0:
+                layer.alert('操作失败,跳转中... 等待时间'+wait+'秒',function(){
+                    var interval = setInterval(function(){
+                    var time = --wait.innerHTML;
+                    if(time <= 0) {
+                        location.href = href;
+                        clearInterval(interval);
+                    };
+                }, 1000);
+                });
+                break;
+
+            }
+
+         })
+        </script> 
+</html>
+
