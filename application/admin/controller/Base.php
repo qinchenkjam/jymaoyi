@@ -15,6 +15,4 @@ class Base extends controller
         //defined('UID') or define('UID', $this->isLogin());
 	}
 
-	
-
 }

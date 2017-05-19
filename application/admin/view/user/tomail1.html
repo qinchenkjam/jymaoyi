@@ -1,0 +1,31 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link href="__PUBLIC__/Admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<form action="{:url('admin/user/tomail')}"  name="form" method="post" enctype="multipart/form-data">
+
+<p><strong>输入您注册的电子邮箱，找回密码：</strong></p> 
+<p><input type="text" class="input" name="email" id="email"><span id="chkmsg"></span></p> 
+<p><input type="button" class="btn" id="sub_btn" value="提 交"></p> 
+</form>
+</body>
+<script type="text/javascript" src="__ADMIN__/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script>
+ $(function(){ 
+ 	$("#sub_btn").click(function(){ 
+        var email = $("#email").val(); 
+        var preg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/; //匹配Email 
+        if(email=='' || !preg.test(email)){ 
+            $("#chkmsg").html("请填写正确的邮箱！"); 
+        }else{ 
+          document.form.submit();
+        } 
+    }); 
+}) 
+</script>
+</html>

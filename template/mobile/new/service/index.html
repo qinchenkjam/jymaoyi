@@ -1,0 +1,42 @@
+﻿{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+{block name="main"}
+ <div class="urHere">position：{$serveTitle}</div> <div class="treeBox">
+ </div> <div id="productCat">
+  <div class="productList">
+ {volist name="serveList" id="vo"}  
+      <dl>
+    <dd>
+    <p class="img"><a onclick="hits({$vo.id});" href="{:url('mobile/CaseServe/detail',['id'=>$vo.id])}"><img src="{$Think.UPLODS}{$vo.image}" width="135" height="135" /></p>
+    <p class="name">{$vo.name|substr=0,21}...</a></p>
+   <!--  <p class="price">￥68.00 元</p> -->
+    </dd>
+   </dl>
+ {/volist}
+   
+  </div>
+  <div class="pager">
+   {$pro_list->render()}
+  </div> 
+  </div>
+ {/block}
+{block name="script"}
+<script type="text/javascript">
+ function hits(id){
+    //alert(id);
+    //var id;
+    $.getJSON("{:url('admin/Product/updateHits')}",{'id':id},function(res){
+          //console.log(data.status);
+           if(res.status==1){
+               //alert(1); 
+               return true;            
+           }
+           if(res.status==-1){
+
+            console.log(res.status);
+           }
+        });
+
+ }
+</script>
+{/block}

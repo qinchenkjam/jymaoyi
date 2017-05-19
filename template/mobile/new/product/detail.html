@@ -1,0 +1,22 @@
+﻿{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+{block name="main"}
+ <div class="urHere">position：<a href="{:url('mobile/Product/index')}">product</a><b>></b> {$pro.name|substr=0,10}..</div> 
+ <div id="product">
+   <!-- <div class="img"><a href="http://demo.douco.com/images/product/15.jpg" target="_blank"><img src="images/15.jpg" width="300" /></a></div> -->
+   <div class="info">
+     <h1>{$pro.name}</h1>
+     <dl class="defined">
+            </dl>
+     <!-- <dl class="price">￥68.00 元</dl> -->
+       <!--    <dl class="tel">
+             <dt>销售热线：</dt>
+             <dd><a href="tel:0596-8888888">0596-8888888</a></dd> -->
+     </dl>
+</div>
+   <div class="content">
+     <h3>产品介绍</h3>
+     <ul>{$pro.content}</ul>
+   </div>
+ </div>
+ {/block}

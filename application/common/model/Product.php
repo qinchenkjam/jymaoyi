@@ -31,14 +31,14 @@ class Product extends Model
 
 
     /*数据查询*/
-    public static function lists($map,$limit=10){
+    public static function lists($map,$limit=12){
         $lists=Product::alias('a')->join('__PRODUCT_CATE__ b ','b.cat_id= a.cat_id')->where($map)->order(['sorts'=>'desc','id'=>'desc'])->paginate($limit);
     	// $lists=Product::where([])->order('id asc')->select();
         return $lists;
     }
 
     /*分类id数据查询*/
-    public static function k_lists($cat_id,$limit=10){
+    public static function k_lists($cat_id,$limit=12){
         //$lists=Product::where(["is_show"=>1,'cat_id'=>$cid])->alias('a')->join('__PRODUCT_CATE__ b ','b.cat_id= a.cat_id')->order('id asc')->paginate($limit);
          $lists=Product::where(["is_show"=>1,'cat_id'=>$cat_id])->order(['sorts'=>'desc','id'=>'desc'])->paginate($limit);
         return $lists;

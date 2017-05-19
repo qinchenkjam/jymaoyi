@@ -1,0 +1,84 @@
+﻿{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+{block name="slide"}
+<div class="slideShow">
+ <ul class="slides">
+    <li><a href="http://m.douco.com" target="_blank"><img src="__HOME__/images/20140921rqmzcp.jpg"/></a></li>
+    <li><a href="http://m.douco.com" target="_blank"><img src="__HOME__/images/20140921kwoypm.jpg"/></a></li>
+    <li><a href="http://m.douco.com" target="_blank"><img src="__HOME__/images/20140921ypmnew.jpg"/></a></li>
+    <li><a href="http://m.douco.com" target="_blank"><img src="__HOME__/images/20140921demloy.jpg"/></a></li>
+   </ul>
+</div>
+<script type="text/javascript">
+
+$(document).ready(function(){
+ $('.slides').bxSlider({
+ });
+})
+
+</script> 
+{/block}
+{block name="nav"}
+<div id="mainNav">
+   <ul>
+<li><a href="{:url('mobile/Article/index')}">News</a></li>
+<li><a href="{:url('mobile/Product/index')}">Products</a></li>
+<li><a href="{:url('mobile/CaseServe/index',['id'=>'2'])}">Agents</a></li>
+<li><a href="{:url('mobile/CaseServe/index',['id'=>'3'])}">PMU training</a></li>
+<li ><a href="{:url('mobile/CaseServe/index',['id'=>'1'])}">Technical service</a></li>
+<li ><a href="{:url('mobile/Pages/index',['id'=>'2'])}">Contact us</a></li>
+       </ul>
+</div>
+{/block}
+{block name="main"}
+<div class="incBox">
+ <h3><a href="{:url('mobile/Product/index')}" class="more">查看更多商品 ></a>产品展示</h3>
+ <div class="productList"> 
+ {volist name="pro_recommend" id="vo"}
+  <dl>
+   <dd>
+   <p class="img"><a onclick="hits({$vo.id});" href="{:url('mobile/Product/detail',['id'=>$vo.id])}"><img src="{$Think.UPLODS}{$vo.image}" width="135" height="135" /></p>
+   <p class="name">{$vo.name}</a></p>
+  <!--  <p class="price">￥128.00 元</p> -->
+   </dd>
+  </dl>
+{/volist}
+   
+
+    
+  </div >
+</div>
+
+<div class="incBox">
+ <h3><a href="{:url('mobile/Article/index')}" class="more">查看更多文章 ></a>新闻中心</h3>
+ <div class="articleList">
+ {volist name="new_list" id="vo"}
+    <dl>
+   <dt><a href="{:url('mobile/Article/detail',['id'=>$vo.id])}">{$vo.title|substr=0,12}...</a></dt>
+   <dd><em>发布时间：{$vo.add_time|date="Y-m-d",###}</em><!-- <em>点击数：100</em> --></dd>
+  </dl>
+ {/volist}  
+   </div>
+
+</div><!--incBox-->
+ {/block}
+ {block name="script"}
+<script type="text/javascript">
+ function hits(id){
+    //alert(id);
+    //var id;
+    $.getJSON("{:url('admin/Product/updateHits')}",{'id':id},function(res){
+          //console.log(data.status);
+           if(res.status==1){
+               //alert(1); 
+               return true;            
+           }
+           if(res.status==-1){
+
+            console.log(res.status);
+           }
+        });
+
+ }
+</script>
+{/block}

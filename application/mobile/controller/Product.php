@@ -14,8 +14,7 @@ class Product extends Base
   {
     
     $id=get_urlid();
-   	$pro=\app\common\model\Product::finds($id);
-  
+   	$pro=\app\common\model\Product::finds($id); 
     $this->assign("pro",$pro); 
     return $this->fetch();
   }

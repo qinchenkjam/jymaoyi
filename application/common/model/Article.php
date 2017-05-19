@@ -35,7 +35,7 @@ class Article extends Model
     }
 
     /*数据分类查询*/
-    public static function calist($cat_id=0,$limit=10){
+    public static function calist($cat_id,$limit=10){
         $lists=Article::where(['cat_id'=>$cat_id])->order('sort desc')->paginate($limit);
     	// $lists=Article::where([])->order('id asc')->select();
         return $lists;

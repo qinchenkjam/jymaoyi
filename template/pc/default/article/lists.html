@@ -22,7 +22,7 @@
 															<ul class="news_ul">
 														
 										
-		{volist name='list' id='news'}
+		{volist name='ar_list' id='news'}
 <li><span class="more">{$news.add_time|date="Y-m-d",###}</span><a href="{:url('index/article/detail',['id'=>$news.id])}">{$news.title}</a></li>
 												
 		  {/volist}			

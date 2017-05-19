@@ -66,7 +66,7 @@ class Banner extends Base
         $del=\app\common\model\Banner::dels($id);
         //dump($res);exit();
         if(false !== $del){
-            action_log('del_banner', 'baner', $del, session('aid'));
+            action_log('del_banner', 'baner', $id, session('aid'));
             $res=['status' => 1, 'msg' => '操作成功'];
             echo json_encode($res);exit();
         }else {

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:40:"./template/pc/default/product\index.html";i:1494469077;s:31:"./template/pc/default/base.html";i:1494559496;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:40:"./template/pc/default/product\index.html";i:1494469076;s:31:"./template/pc/default/base.html";i:1494559496;}*/ ?>
 ﻿ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

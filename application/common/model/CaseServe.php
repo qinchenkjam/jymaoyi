@@ -44,8 +44,8 @@ class CaseServe extends Model
 
 
     /*删除数据*/
-    public static function dels($id){
-        $info=CaseServe::where(["id"=>$id])->delete();
+    public static function dels($map){
+        $info=CaseServe::where($map)->delete();
         if ($info) {
             return true;
         }else{

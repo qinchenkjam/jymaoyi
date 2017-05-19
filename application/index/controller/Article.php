@@ -1,7 +1,6 @@
 <?php
 namespace app\index\controller;
-use think\Db;
-use think\Request;
+use think\Cache;
 class Article extends Base
 {
    
@@ -10,16 +9,13 @@ class Article extends Base
         
         $cid=get_urlid();   
         if($cid>0){
-            $list = \app\common\model\Article::clist($cid,4);
-          
+            $ar_list = \app\common\model\Article::calist($cid,12);
+          //dump($ar_list);exit();
         }else{
-            $list = \app\common\model\Article::lists(4);
-
-        }
-    	$ArticleCate=\app\common\model\ArticleCate::lists(4);
-        $this->assign('ArticleCate', $ArticleCate); 
-
-    	$this->assign('list', $list);       
+            $ar_list = \app\common\model\Article::lists(12);
+            Cache::set('ar_list',$ar_list);
+        }     
+    	$this->assign('ar_list', $ar_list);       
 		return $this->fetch();
        
     }
@@ -32,15 +28,14 @@ class Article extends Base
         $id=get_urlid(); 
         //dump($id);exit;         
         $msg=\app\common\model\Article::finds($id);  
-        $this->assign('msg', $msg);	
-                  
-        $t_article=\app\common\model\Article::getDataById($id);
-        //dump($t_article['prev']['content']);exit;
-		$this->assign('t_article', $t_article);
-        
-        $ArticleCate=\app\common\model\ArticleCate::lists(4);
-        $this->assign('ArticleCate', $ArticleCate); 
-       return $this->fetch();
+        $this->assign('msg', $msg);	                 
+        $relateData=\app\common\model\Article::getDataById($id);
+
+        //dump($relateData['prev']['title']);exit;
+    	$this->assign('prveId',$relateData['prev']['id']);
+        $this->assign('nextId',$relateData['next']['id']);
+        $this->assign('relateData', $relateData);                
+        return $this->fetch();
     }
 
     

@@ -18,10 +18,10 @@
     <thead>
       <tr class="text-c">
         <th width="25"><input type="checkbox" name="" value="" class="all"></th>
-        <th width="80">ID</th>
+        <th width="80">操作ID</th>
      
         <th width="30%">内容</th>
-        <th width="17%">用户名</th>
+        <th width="17%">用户id</th>
         <th width="120">客户端IP</th>
         <th width="120">时间</th>
         <th width="70">操作</th>
@@ -34,7 +34,11 @@
         <td><input name="id[]" type="checkbox" value="{$vo.id}"></td>
         <td>{$vo.id}</td>
       
-        <td>{:get_action($vo['action_id'],'title')}</td>
+        <td>{:get_action($vo['action_id'],'title')},
+        {if condition="$vo['record_id'] neq 1"}
+            操作  id {$vo.record_id}
+        {/if}
+       </td>
         <td>{$vo.user_id}</td>
         <td>{$vo.action_ip}</td>
         <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>

@@ -93,7 +93,7 @@ class Product extends Base
                 if(file_exists($img)){
                    unlink($img);
                 }
-                 action_log('edit_product', 'product', $id, session('aid'));              
+                 action_log('edit_product', 'product',$edit, session('aid'));              
                 $this->success("更新成功","admin/product/index",1);
             }else{
                  $this->error('操作失败');

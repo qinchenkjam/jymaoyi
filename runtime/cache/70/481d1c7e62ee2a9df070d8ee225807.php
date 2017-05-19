@@ -1,0 +1,3 @@
+<?php
+//000000000000a:8:{s:8:"WEB_NAME";s:40:"guang zhou jin yuan cosmetics co.， ltd";s:12:"WEB_KEYWORDS";s:39:"uang zhou jin yuan cosmetics co.， ltd";s:15:"WEB_DESCRIPTION";s:256:"dazzling colors'(xcf)permanent makeup product|permanent cosmetics training school|tattoo eyebrow pigment|lip colors|pmu machine|anesthetic|manual pen|needle|permanent makeup pictures - love with colors(yzl)micropigmentation|lip eyeliner-tattooing services|";s:10:"WEB_STATUS";s:1:"1";s:14:"WEB_CLOSE_WORD";s:15:"网中维护中";s:14:"WEB_ICP_NUMBER";s:15:"+86-20-29185929";s:10:"WEB_ADRESS";s:89:"2nd floor ,office building a,beauty exchange center ,guang yuan xi road ,guangzhou ,china";s:7:"WEB_TEL";s:9:"020-88888";}
+?>

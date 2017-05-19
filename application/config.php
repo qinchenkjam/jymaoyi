@@ -17,9 +17,9 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => false, //true
+    'app_debug'              => true,
     // 应用Trace
-    'app_trace'              => false,
+    'app_trace'              => true,
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
@@ -97,7 +97,7 @@ return [
     // 是否强制使用路由
     'url_route_must'         => false,
     // 域名部署
-    'url_domain_deploy'      => false,
+    'url_domain_deploy'      => true,
     // 域名根，如thinkphp.cn
     'url_domain_root'        => '',
     // 是否自动转换URL中的控制器和操作名
@@ -276,12 +276,4 @@ return [
     'MAIL_FROMNAME'=>'',//发件人姓名
     'MAIL_CHARSET' =>'utf-8',//设置邮件编码
     'MAIL_ISHTML' =>TRUE, // 是否HTML格式邮件
-
-
-    'http_exception_template'    =>  [
-    // 定义404错误的重定向页面地址
-    404 =>  APP_PATH.'404.html',
-    // 还可以定义其它的HTTP status
-    401 =>  APP_PATH.'401.html',
-]
 ];

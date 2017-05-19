@@ -21,8 +21,25 @@
 															
 						<div class="title"><span class="right">Position: Homt &gt; {$msg.title|substr=0,10}..</a></span>{$msg.title|substr=0,25}..</div>
 <div class="content">
-	 {$msg.content|htmlspecialchars_decode|stripslashes}							
-															
+{$msg.content|htmlspecialchars_decode|stripslashes}							
+<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<span>
+{empty name="$relateData['prev']"}
+previous:
+{else/}
+<a href="{:url('index/Article/detail',['id'=>$prveId])}">{$relateData['prev']['title']}</a>
+{/empty}
+</span> 
+&nbsp; &nbsp;
+<span>
+{empty name="$relateData['next']"}
+next:&nbsp;
+{else/}
+<a href="{:url('index/Article/detail',['id'=>$nextId])}">{$relateData['next']['title']}</a>
+{/empty}
+</span>
+								<p>&nbsp;</p>															
 						<div class="clear"></div>
 						<div class="scott" id="quotes">	</div>
 						

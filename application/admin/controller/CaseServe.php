@@ -24,7 +24,7 @@ class CaseServe extends Base
         
         if (Request::instance()->isPost()) {
            $data=input('post.');
-           $inserts=\app\common\model\CaseServe::inserts($data);
+           $inserts=\app\common\model\CaseServe::insert($data);
            if($inserts){
                // return $this->success('添加成功','admin/CaseServe/index');
             return $this->success('添加成功','CaseServe/index');
@@ -71,10 +71,31 @@ class CaseServe extends Base
     public function del($id)
     {  	
 
-        $res=\app\common\model\CaseServe::dels($id);
-        if($res){        
-          $this->success('删除成功');       
-        }      
+        if(request()->isPost()){
+         $ids=input('param.','int');
+         //dump($ids);exit();
+         foreach ($ids as $key => $value) {
+          $ids= $value;       
+         }  
+          //dump($ids);exit();      
+         $map['id'] = ['in',$ids];
+      }
+      if(request()->isGet()){
+         $ids=input('get.id',0,'int');  
+         $map['id'] = $ids;
+      }       
+      $res=\app\common\model\CaseServe::dels($map);    
+        if($res){
+          //unlink("./Uploads/".$data['__HOME__/__HOME__/images']);
+          //行为记录 
+          if(is_array($ids)){
+             $ids=implode(",",$ids);
+          }
+          action_log('del_case_serve', 'case_serve', $ids, session('aid'));
+          $this->success('删除成功',url('index'),'1');
+        }else{
+          $this->error('删除失败');
+        }     
     }
 
 

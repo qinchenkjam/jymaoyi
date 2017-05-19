@@ -1,0 +1,21 @@
+﻿{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+{block name="main"}
+ <div class="urHere">position:{$pro.name|substr=0,30}</div> <div id="product">
+  
+   <div class="info">
+     <h1>{$pro.name}</h1>
+     <dl class="defined">
+            </dl>
+     <!-- <dl class="price">￥68.00 元</dl> -->
+       <!--    <dl class="tel">
+             <dt>销售热线：</dt>
+             <dd><a href="tel:0596-8888888">0596-8888888</a></dd> -->
+     </dl>
+        </div>
+   <div class="content">
+     <h3>introuction</h3>
+     <ul>{$pro.content}</ul>
+   </div>
+ </div>
+ {/block}

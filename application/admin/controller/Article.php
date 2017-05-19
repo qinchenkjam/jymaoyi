@@ -119,7 +119,7 @@ class Article extends Base
 	    $del=\app\common\model\Article::dels($id);
 	    //dump($res);exit();
 		if(false !== $del){
-			action_log('del_article', 'article', $del, session('aid'));
+			action_log('del_article', 'article', $id, session('aid'));
     		$res=['status' => 1, 'msg' => '操作成功'];
          	echo json_encode($res);exit();
     	}else {

@@ -1,40 +1,27 @@
 <?php
 namespace app\mobile\controller;
+use think\Cache;
 class Article extends Base
 {
    
-    public function lists()
+    public function index()
     {
         
         $cid=get_urlid(); 
        
         //dump($cid);exit;  
         if($cid>0){
-            $list = \app\common\model\Article::clist($cid,4);
+            $m_ar_list = \app\common\model\Article::clist($cid,4);
           
         }else{
-            $list = \app\common\model\Article::lists(4);
-
+            $m_ar_list = \app\common\model\Article::lists(4);
+            Cache::set('m_ar_list',$m_ar_list);
         }
         
-    	$ArticleCate=\app\common\model\ArticleCate::lists(4);
-        $this->assign('ArticleCate', $ArticleCate); 
-
-    	$this->assign('list', $list);       
+    	$this->assign('list',$m_ar_list);       
 		return $this->fetch();
        
     }
-
-    public function ajax_data(){
-        $cid=input('get.');
-        if ($cid) {
-                $res=['status' => 1, 'msg' => '添加成功'];
-
-                
-                echo json_encode($res);exit();
-        }
-
-     }
 
 
     public function detail($id)
@@ -44,15 +31,13 @@ class Article extends Base
         //dump($id);exit;         
         $msg=\app\common\model\Article::finds($id);  
         $this->assign('msg', $msg);	
-         
-        $cid=get_urlid();
-    
-        $t_article=\app\common\model\Article::getDataById($cid);
-        //dump($t_article['prev']['content']);exit;
-		$this->assign('t_article', $t_article);
+
+        $relateData=\app\common\model\Article::getDataById($id);  
+        $this->assign('prveId',$relateData['prev']['id']);
+        $this->assign('nextId',$relateData['next']['id']);
+        $this->assign('relateData', $relateData);
         
-        $ArticleCate=\app\common\model\ArticleCate::lists(4);
-        $this->assign('ArticleCate', $ArticleCate); 
+      
        return $this->fetch();
     }
 

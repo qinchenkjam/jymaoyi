@@ -34,6 +34,7 @@ class Page extends Base
                $result= $this->obj->updatemsgs($data,$id);
             } else {
               $result=\app\common\model\Page::inserts($data);
+               action_log('add_page', 'page', $result, session('aid'));
             }
             if(false !== $result){
                 $this->success('保存信息成功','admin/page/index');
@@ -46,6 +47,7 @@ class Page extends Base
         $res=$this->obj->where('id',input('get.id'))->delete();
         //dump($res);exit();
         if(false !== $res){
+            action_log('del_page', 'page', $id, session('aid'));
             $data = [
                 'status' => 0,
                 'msg' => '删除成功！',

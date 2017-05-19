@@ -3,6 +3,7 @@ namespace app\admin\controller;
 use think\Request;
 use think\Db;
 use think\Model;
+use think\Session;
 class Admin extends Base
 {
 	public function index()
@@ -63,6 +64,29 @@ class Admin extends Base
         }
         //dump($res);exit();
        
+    }
+
+    public function changePassword(){
+      $id=Session::get('aid');
+      if(request()->isPost()){        
+         $password1=input('post.password');
+         $password2=input('post.password2');
+         //dump($password2);exit();
+         if($password1!=$password2){
+            $this->error('密码不一致');
+         }
+         $data['password']=encrypt($password1);
+         $res=\app\common\model\Admin::updatemsgs($data,$id);
+         if ($res) {
+           $this->success('操作成功','admin/Index/index');
+         } else {
+           $this->error('更新失败');
+         }
+         
+      }  
+       $info =\app\common\model\Admin::finds($id);
+       $this->assign("info",$info);
+       return $this->fetch('admin/change_password');
     }
 
    

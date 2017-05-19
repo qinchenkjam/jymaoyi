@@ -23,7 +23,7 @@ class Template extends Base
          }
         //dump($template_config);exit;
         $this->assign('t',$t);             
-        $template_arr = include("./Application/$m/config.php");
+        $template_arr = include("./application/$m/config.php");
         //dump($template_arr);exit;   
         $this->assign('default_theme',$template_arr['DEFAULT_THEME']);
         $this->assign('template_config',$template_config);
@@ -45,7 +45,7 @@ class Template extends Base
          }
         //dump($template_config);exit;
         $this->assign('t',$t);             
-        $template_arr = include("./Application/$m/config.php");
+        $template_arr = include("./application/$m/config.php");
         //dump($template_arr);exit;   
         $this->assign('default_theme',$template_arr['DEFAULT_THEME']);
         $this->assign('template_config',$template_config);
@@ -66,14 +66,14 @@ class Template extends Base
         //tpCache("hidden.{$t}_default_theme",$_GET['key']);
         //tpCache('hidden',array("{$t}_default_theme"=>$_GET['key']));                         
         // 修改文件配置  
-         if(!is_writeable("./Application/$m/config.php"))
+         if(!is_writeable("./application/$m/config.php"))
             return "文件/Application/$m/config.php不可写,不能启用魔板,请修改权限!!!";           
          
         $config_html ="<?php
 return [
      // 视图输出字符串内容替换
     'view_replace_str'       => [     
-        '__HOME__'  =>'/template/$t/$k/Static',
+        '__HOME__'  =>'/template/$t/$k/static',
     ],  
 
     'template'               => [

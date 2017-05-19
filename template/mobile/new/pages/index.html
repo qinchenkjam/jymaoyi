@@ -1,0 +1,14 @@
+﻿{extend name="base"/}
+{block name="title"}{$Think.config.site.WEB_NAME}{/block}
+{block name="main"}
+ <div class="treeBox">
+{volist name="m_page_list" id="vo"}
+ <a href="{:url('mobile/Pages/index',['id'=>$vo.id])}" class="cur">{$vo.page_name}</a>
+{/volist}
+ </div> <div id="page">
+   <h1>{$vo.page_name}</h1>
+   <div class="content">
+   {$page.content|htmlspecialchars_decode|stripslashes}
+   </div>
+ </div>
+ {/block}

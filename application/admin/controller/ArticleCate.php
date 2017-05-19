@@ -25,8 +25,9 @@ class ArticleCate extends Base
         
         if (Request::instance()->isPost()) {
            $data=input('post.');
-           $inserts=\app\common\model\ArticleCate::insert($data);
+           $inserts=\app\common\model\ArticleCate::inserts($data);
            if($inserts){
+             action_log('add_article_cat', 'article', $inserts, session('aid'));
                 return $this->success('添加成功','admin/ArticleCate/index');
                 //return $this->success('添加成功',url('article/cate_index'));
             }else{
@@ -55,20 +56,7 @@ class ArticleCate extends Base
          
         }else{
           $id=input("get.id");     
-          $msg=\app\common\model\ArticleCate::finds($id);
-          //$Tree = new \util\Tree;
-          //$list=\app\common\model\ArticleCate::lists(10);           
-          //$lists=$Tree->tree($list);
-          /*$select='';
-          foreach ($list as $key => $value){
-                    if($value['cat_id']==$msg['pid']){
-                      
-                      $select="selected";
-                    }
-            } */
-         
-          //$this->assign('selected',$select); 
-          //$this->assign('lists',$lists);      
+          $msg=\app\common\model\ArticleCate::finds($id);           
           $this->assign('msg', $msg);
           return $this->fetch('article/cate_edit');
         }
@@ -88,7 +76,7 @@ class ArticleCate extends Base
         $res=\app\common\model\ArticleCate::dels($cid);
         if($res){
           //行为记录
-            action_log('del_product_cat', 'product', $res, session('aid'));
+            action_log('del_article_cat', 'article', $cid, session('aid'));
           $this->success('删除成功');       
         }      
     }

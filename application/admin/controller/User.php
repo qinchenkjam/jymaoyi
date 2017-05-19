@@ -2,7 +2,7 @@
 namespace app\admin\controller;
 use think\Request;
 use think\Db;
-use think\Model;
+use think\Session;
 use think\Controller;
 class User extends Controller
 {
@@ -90,7 +90,7 @@ class User extends Controller
                     
                     session('expires_time',$_SERVER['REQUEST_TIME']);
                     //echo $expires_time;
-                    //dump($_SERVER['REQUEST_TIME']);exit;
+                    //dump(Session::get('expires_time'));exit();
                     exit('发送成功！请登录到您的邮箱及时重置您的密码');
                     
                 } else {
@@ -111,6 +111,8 @@ class User extends Controller
         //$email = input('get.email');
         // $passwordToken = input('get.passwordToken');
         //dump($email);exit;
+        
+        //dump(Session::get('expires_time'));exit();
         $url=$_SERVER['REQUEST_URI'];
         $data=(parse_url_param($url)); //从连接中取数据
         $email =$data[2];
@@ -121,11 +123,10 @@ class User extends Controller
         //dump($passwordToken);exit;
         if (!$result) exit('error link');
         $checkToken = md5($result['id'] . $result['user_name'] . $result['password']);
+        if ($checkToken != $passwordToken) exit('非法链接');
 
-        if ($checkToken != $passwordToken) exit('this no exit link');
-            //$_SESSION['expires_time']
-        //var_dump($result['passwordtime']);
-        if (time()-session('expires_time') > 10 * 60) exit('The link has expires');
+        //$expires_time=Session::get('expires_time');      
+       // if (time()-$expires_time > 10 * 60) exit('链接过期');
         $link = "http://{$_SERVER["HTTP_HOST"]}/index.php/Admin/user/reSet?id={$result['id']}"; //这里跳转到一个个人博客的二维码
         //dump($link);exit();
         // 跳转至客户密码重置页面
@@ -141,18 +142,18 @@ class User extends Controller
     public function reSet()
     {
         $model = model('admin');
-        $id = input('get.id');
-        //dump($id);die();
+        $id = input('get.id');      
         $condition['id'] = $id;
-        $info = $model->where($condition)->find();      
-        if (request()->isPost()) {
-            //dump($id);die();
-           
-            $data['password'] = encrypt(input('post.password'));       
-            $id   = input("post.id",0,"int");
-            $res = $model->where('id='.$id)->update($data);
+        $info = $model->where($condition)->find(); 
+        //p($info['id']);     
+        if(request()->isPost()){
+             //dump(input('post.'));exit();  
+        $data['password'] = encrypt(input('post.password'));
+         $id=input('post.id');
+        // dump($id);exit();        
+          $res = $model->where(['id'=>$id])->update($data);      
             if($res){
-            $this->success('保存信息成功','admin/user/login');
+            $this->success('保存信息成功','admin/User/login');
             }
             if (!$res) exit('修改密码失败');
 

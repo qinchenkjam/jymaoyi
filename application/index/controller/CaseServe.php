@@ -15,7 +15,8 @@ class CaseServe extends Base
      } else if($id==3) {
         $serveTitle='PMU training';
      }
-     
+     Cache::set('serveTitle',$serveTitle);
+        }
      $this->assign('serveList',$serveList);
      $this->assign('serveTitle',$serveTitle);
      return $this->fetch('service/index');

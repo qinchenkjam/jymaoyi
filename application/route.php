@@ -20,9 +20,9 @@ return [
     'article_detail/[:id]' => 'index/article/detail',
     'page' => ['index/Pages/index',['id' => '\d+']],
     'service' => ['index/CaseServe/index',['id' => '\d+']],
-    'service_detail/[:id]' => 'index/CaseServe/detail',
+    'service_detail/[:id]' => 'index/CaseServe/detail', 
 
 ];
-//use think\Route;
+use think\Route;
 // m子域名绑定到mobile模块
-Route::domain('m','mobile');
+Route::domain('mobile','mobile');
